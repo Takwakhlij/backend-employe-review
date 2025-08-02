@@ -2,9 +2,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 
-// TODO/ 
-// Demander le role de l'utilisateur lors de l'inscription, si son role est "Manager",  el id mta"ou houa yethat fel manager 
-// si employe , lezem yootlob alih manager , wel manager heka ykoun different lel personne heki eli bech ta3mel signup 
+
 const register = async (req, res) => {
   const { name, email, password, role, manager } = req.body;
 

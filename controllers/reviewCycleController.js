@@ -13,7 +13,7 @@ const createCycle = async (req, res) => {
 const listCycles = async (req, res) => {
   try {
     const cycles = await ReviewCycle.find(); 
-    res.json(cycles); // les renvoie en réponse JSON.
+    res.json(cycles);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

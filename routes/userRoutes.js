@@ -12,14 +12,14 @@ const {
 const { authenticateJWT } = require('../middlewares/authMiddleware');
 const { authorizeRole } = require('../middlewares/roleMiddleware');
 
-// Routes protégées
-router.get('/me', authenticateJWT, getCurrentUser); // Récupérer les informations de l'utilisateur connecté users/me
-router.get('/managers', authenticateJWT, listManagers); // Récupérer la liste des managers users/managers
+
+router.get('/me', authenticateJWT, getCurrentUser); 
+router.get('/managers', authenticateJWT, listManagers); 
 
 // Admin only
-router.get('/', authenticateJWT, authorizeRole('Admin'), listUsers);//  /users
-router.post('/', authenticateJWT, authorizeRole('Admin'), createUser); //  /users
-router.put('/:id', authenticateJWT, authorizeRole('Admin'), updateUser);//  /users/:id
-router.delete('/:id', authenticateJWT, authorizeRole('Admin'), deleteUser); //  /users/:id
+router.get('/', authenticateJWT, authorizeRole('Admin'), listUsers);
+router.post('/', authenticateJWT, authorizeRole('Admin'), createUser); 
+router.put('/:id', authenticateJWT, authorizeRole('Admin'), updateUser);
+router.delete('/:id', authenticateJWT, authorizeRole('Admin'), deleteUser); 
 
 module.exports = router;

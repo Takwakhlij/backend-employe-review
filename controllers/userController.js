@@ -1,7 +1,6 @@
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
 
-// Obtenir les infos de l’utilisateur connecté
 const getCurrentUser = async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select('-password');
@@ -12,7 +11,7 @@ const getCurrentUser = async (req, res) => {
   }
 };
 
-//  Lister tous les managers
+
 const listManagers = async (req, res) => {
   try {
     const managers = await User.find({ role: 'Manager' }).select('name email');
@@ -22,7 +21,7 @@ const listManagers = async (req, res) => {
   }
 };
 
-//  Lister tous les utilisateurs (admin uniquement)
+
 const listUsers = async (req, res) => {
   try {
     const users = await User.find().select('-password');
@@ -31,8 +30,6 @@ const listUsers = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-
-//  Créer un utilisateur (admin uniquement)
 const createUser = async (req, res) => {
   const { name, email, password, role, manager } = req.body;
 
@@ -60,7 +57,6 @@ const createUser = async (req, res) => {
   }
 };
 
-//  Modifier un utilisateur (admin uniquement)
 const updateUser = async (req, res) => {
   const { id } = req.params;
   const updates = req.body;
@@ -77,8 +73,6 @@ const updateUser = async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 };
-
-//  Supprimer un utilisateur (admin uniquement)
 const deleteUser = async (req, res) => {
   const { id } = req.params;
   try {
